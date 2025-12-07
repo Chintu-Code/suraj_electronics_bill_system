@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weighing Machine Billing System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+</head>
+<body >
+
+<div class="container">
+    <h2>🧾 SURAJ ELECTRONICS BILLING SYSTEM</h2>
+
+    <form id="billingForm">
+
+        <div class="row">
+            <label>Customer Name:</label>
+            <input type="text" id="customerName" required placeholder="Chintu Shaw">
+        </div>
+
+        <div class="row">
+            <label>Mobile Number:</label>
+            <input type="text" id="mobile" required placeholder="9062325006">
+        </div>
+
+        <div class="row">
+            <label>Address:</label>
+            <textarea id="address" required placeholder="23/1 K.D. Road"></textarea>
+        </div>
+        <div class="row">
+    <label>Invoice Number:</label>
+    <input type="text" id="invoiceNo" placeholder="Enter Invoice No" required>
+</div>
+
+<div class="row">
+    <label>Date:</label>
+    <input type="date" id="invoiceDate" required>
+</div>
+        <hr>
+        <h3>Items</h3>
+        <table id="itemsTable">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Qty</th>
+                    <th>Price (₹)</th>
+                    <th>Total (₹)</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="itemBody"></tbody>
+        </table>
+
+        <button type="button" class="addBtn" onclick="addItem()">+ Add Item</button>
+
+        <div class="row">
+            <label><b>Grand Total (₹):</b></label>
+            <input type="text" id="grandTotal" readonly>
+        </div>
+        <label>Problem Description</label>
+        <textarea id="problemDesc" placeholder="Write problem details here..." rows="4"></textarea>
+
+        <button type="button" onclick="generatePDF()">Generate PDF</button>
+    </form>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
