@@ -60,25 +60,29 @@ function updateGrandTotal() {
 
     // --- Header ---
     pdf.setFontSize(22);
+    pdf.text("BILL", 10, y, { align: "left" });
     pdf.text("SURAJ ELECTRONICS", 105, y, { align: "center" });
     y += 10;
 
     pdf.setFontSize(14);
-    pdf.text("Sales and Service all type of weighing maching", 105, y, { align: "center" });
+    pdf.text("Sales and Service of all type of weighing scale", 105, y, { align: "center" });
     y += 7;
     pdf.setFontSize(9);
-    pdf.text("23/1 K.D. Road,(Naihati), Contact: 9883280330", 105, y, { align: "center" });
+    pdf.text("23/1 Kailash Das Road,Post Garifa(743166), Contact: 9883280330", 105, y, { align: "center" });
     y += 12;
 
     // --- Manual Invoice Info ---
     let invoiceNo = document.getElementById("invoiceNo").value || "-";
-    let dateStr = document.getElementById("invoiceDate").value || "-";
-
+    let rawDate = document.getElementById("invoiceDate").value || "-";
+    let dateParts = rawDate.split("-");                 // [YYYY, MM, DD]
+    let dateStr = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];  // DD-MM-YYYY
     pdf.setFontSize(12);
     pdf.text(`Invoice No: ${invoiceNo}`, 15, y);
-    pdf.text("Trade Licence No.: 0917P195223278183", 130, y);
-    pdf.text("Old certificate No.: 2002718043", 130, y+5);
-    pdf.text(`Date: ${dateStr}`, 130, y+10);
+    pdf.text("Trade Licence No.: 0917P195223278183", 120, y);
+    pdf.text("Old certificate No.: 2002718043", 120, y+5);
+    pdf.text(`Date: ${dateStr}`, 120, y+10);
+    pdf.text("Model No: " + document.getElementById("model").value, 120, y+20);
+    pdf.text("Serial No: " + document.getElementById("serial").value, 120, y+25);
     y += 10;
 
     // --- Customer Details ---
@@ -95,8 +99,9 @@ function updateGrandTotal() {
     y += 10;
 
     // --- Items Table Header ---
-    pdf.setFontSize(14);
-    pdf.text("Items:", 15, y);
+    pdf.setFontSize(13);
+    pdf.text("Brand Name: " + document.getElementById("brand").value, 15, 90);
+
     y += 8;
 
     pdf.setFontSize(12);
@@ -134,7 +139,14 @@ function updateGrandTotal() {
     // --- Grand Total (Left Shift) ---
     pdf.setFontSize(14);
     pdf.text(`Grand Total (RS): ${document.getElementById("grandTotal").value}`, 15, y);
-    y += 20;
+    y += 10;
+    // ---- THANK YOU MESSAGE ----
+pdf.setFontSize(16);
+pdf.setTextColor(0, 102, 204);   // nice blue tone
+pdf.text("Thank You For Your Business!", 105, y, { align: "center" });
+pdf.setTextColor(0, 0, 0); // reset
+y += 4;
+
 
     // --- Problem Description ---
     let prob = document.getElementById("problemDesc").value || "-";
@@ -150,7 +162,7 @@ function updateGrandTotal() {
     pdf.text(lines, 15, y);
     y += lines.length * 7;
 
-    y += 25; // gap before signature
+    y += 5; // gap before signature
 
     // --- Signature & Stamp with Gap ---
    // --- Signature Section ---
@@ -175,7 +187,7 @@ pdf.setFontSize(11);
 pdf.setTextColor(180, 0, 0); // warning shade
 
 pdf.text(
-  "Notice-1: Purchasing a weighing machine without proper renewal is strictly prohibited and considered an illegal activity.",
+  "Notice-1: Old palla must be collected within 3 months. After that, we are not responsible for it.",
   15,
   y,
   { maxWidth: 180 }
@@ -183,7 +195,7 @@ pdf.text(
 
 pdf.setTextColor(0, 0, 0); // reset
 
-y += 12;
+y += 5;
 
 pdf.setFontSize(11);
 pdf.setTextColor(150, 0, 0); // light red warning shade
