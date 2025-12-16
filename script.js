@@ -62,6 +62,9 @@ function updateGrandTotal() {
     pdf.setFontSize(22);
     pdf.text("BILL", 10, y, { align: "left" });
     pdf.text("SURAJ ELECTRONICS", 105, y, { align: "center" });
+    y += 5;
+    pdf.setFontSize(11);
+    pdf.text("(Prop. Suraj Shaw)", 105, y, { align: "center" });
     y += 10;
 
     pdf.setFontSize(14);
@@ -217,4 +220,5 @@ pdf.setTextColor(0, 0, 0);
     // Save PDF
     pdf.save(`Invoice_${invoiceNo}.pdf`);
 }
+
 
