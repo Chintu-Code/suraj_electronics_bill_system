@@ -99,7 +99,7 @@ function updateGrandTotal() {
     pdf.text(`Mobile: ${document.getElementById("mobile").value}`, 15, y);
     y += 7;
     pdf.text(`Address: ${document.getElementById("address").value}`, 15, y);
-    y += 10;
+    y += 15;
 
     // --- Items Table Header ---
     pdf.setFontSize(13);
@@ -220,5 +220,6 @@ pdf.setTextColor(0, 0, 0);
     // Save PDF
     pdf.save(`Invoice_${invoiceNo}.pdf`);
 }
+
 
 
