@@ -103,7 +103,7 @@ function updateGrandTotal() {
 
     // --- Items Table Header ---
     pdf.setFontSize(13);
-    pdf.text("Brand Name: " + document.getElementById("brand").value, 15, 95);
+    pdf.text("Brand Name: " + document.getElementById("brand").value, 15, 90);
 
     y += 8;
 
@@ -220,6 +220,7 @@ pdf.setTextColor(0, 0, 0);
     // Save PDF
     pdf.save(`Invoice_${invoiceNo}.pdf`);
 }
+
 
 
 
